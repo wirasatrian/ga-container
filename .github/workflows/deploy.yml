@@ -6,19 +6,19 @@ on:
       - dev
 env:
   CACHE_KEY: node-deps
-  # MONGODB_DB_NAME: ecommerce_mongo_db
+  MONGODB_DB_NAME: $MONGODB_DB_NAME
 jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
     container:
       image: node:16
-    # env:
-    # MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-    # MONGODB_CLUSTER_ADDRESS: abonbali.ufkq8fc.mongodb.net
-    # MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-    # MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-    # PORT: 8080
+    env:
+      MONGODB_CONNECTION_PROTOCOL: mongodb+srv
+      MONGODB_CLUSTER_ADDRESS: $MONGODB_CLUSTER_ADDRESS
+      MONGODB_USERNAME: $MONGODB_USERNAME
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
+      PORT: 8080
     steps:
       - name: Get Code
         uses: actions/checkout@v3
